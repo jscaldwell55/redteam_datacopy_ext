@@ -1,0 +1,71 @@
+/* styles.css - For floating buttons and page notifications */
+#formfiller-float-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 55px; /* Ensure enough width for text */
+  height: 55px;
+  padding: 0 10px;
+  border-radius: 28px; /* Pill shape */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 2147483646; /* High z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#formfiller-float-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+#formfiller-float-btn span:first-child { /* Icon */
+  font-size: 18px;
+}
+
+.formfiller-btn-extract {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.formfiller-btn-fill {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+/* Page Notifications */
+.formfiller-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 320px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 2147483647; /* Max z-index */
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease-out;
+}
+
+.formfiller-notification.formfiller-show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.formfiller-success { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+.formfiller-error { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+.formfiller-warning { background: linear-gradient(45deg, #f39c12, #e67e22); }
+.formfiller-info { background: linear-gradient(45deg, #3498db, #2980b9); }

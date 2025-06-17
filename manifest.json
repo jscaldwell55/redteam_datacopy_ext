@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Red Team Form Filler",
+  "version": "1.0.0",
+  "description": "Extracts data from AI platforms and fills Google Forms using a remote configuration.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "clipboardWrite",
+    "scripting"
+  ],
+  "host_permissions": [ 
+    "*://docs.google.com/spreadsheets/*"
+  ],
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["remoteConfigParser.js", "content.js"], 
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Red Team Form Filler"
+  }
+}
