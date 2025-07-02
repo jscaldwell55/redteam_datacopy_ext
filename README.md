@@ -54,7 +54,7 @@ fillElement() sets values and dispatches events for compatibility. <br>
 New config mapping is created and tested at the Lead level. Once ready, the web address of the remote config is sent to team members who copy/paste it into their extension Settings. They can then begin using for that project.  
 
 
-**Example Config Structure** (used in initial test)
+**Example Config Structure** 
 
 {
 "platforms": {
