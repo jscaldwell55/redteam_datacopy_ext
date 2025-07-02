@@ -1,10 +1,11 @@
 OVERVIEW
 
-This is a functional prototype of a Chrome extension that automates data transfer between two browser tabs. It is designed to support rapid adaptation to new platforms via remote configuration.
+Chrome extension that automates data transfer between two browser tabs. It is designed to support rapid adaptation to new platforms via remote configuration.
 
 Core Functionality
 
 Extract: Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local.
+
 Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
 
 QUICK START
@@ -59,7 +60,7 @@ fillElement() sets values and dispatches events for compatibility.
 
 
 
-Example Config Structure used for Demo
+EXAMPLE CONFIG STRUCTURE (used for initial testing)
 
 {
   "platforms": {
