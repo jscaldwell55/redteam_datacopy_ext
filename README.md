@@ -50,4 +50,39 @@ Maps data keys to form fields using selectors or label keywords. <br>
 fillElement() sets values and dispatches events for compatibility. <br>
 
 
+**Example Config Structure** (used in initial tests)
+
+{
+"platforms": {
+"LocalTestTarget": {
+"detectHostnames": [""],
+"detectPathnames": ["mock_gform.html"]
+},
+"LocalTestSource": {
+"detectHostnames": [""],
+"detectPathnames": ["mock_feather.html"],
+"fields": [
+{ "key": "firstPrompt", "selectors": ["div.user-prompt-selector-example"] },
+{ "key": "finalResponse", "selectors": ["div.model-response-selector-example"] }
+]
+},
+"Gemini": {
+"detectHostnames": [
+"gemini.google.com",
+"ai.google.dev"
+],
+"fields": [
+{ "key": "firstPrompt", "selectors": [".query-text", ".user-query", ".user-prompt"], "required": true },
+{ "key": "finalResponse", "selectors": [".response-content", ".model-response-text", ".output-content"], "required": true }
+]
+}
+},
+"googleForms": {
+"fieldMappings": [
+{ "dataKey": "firstPrompt", "labelKeywords": ["prompt"], "selectors": ["#the_prompt", "textarea[aria-label*='prompt'i]"] },
+{ "dataKey": "finalResponse", "labelKeywords": ["response"], "selectors": ["#the_response", "textarea[aria-label*='response'i]"] }
+]
+}
+}
+
 
