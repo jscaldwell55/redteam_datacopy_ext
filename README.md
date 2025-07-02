@@ -49,6 +49,10 @@ fillGoogleForm() retrieves stored data. <br>
 Maps data keys to form fields using selectors or label keywords. <br>
 fillElement() sets values and dispatches events for compatibility. <br>
 
+**New Project Flow**
+
+Config mapping is created and tested at the Lead level. Once ready, the web address of the remote config is sent to team members who copy/paste it into their extension Settings. They can then begin using for that project.  
+
 
 **Example Config Structure** (used in initial test)
 
