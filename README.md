@@ -8,7 +8,7 @@ Extract: Scrapes data from a source webpage using CSS selectors defined in a rem
 
 Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
 
-**Install and Use**
+**Installation and Usage**
 
 Load the Extension: <br>
 Go to chrome://extensions <br>
@@ -18,7 +18,7 @@ Configure: <br>
 Click the extension icon, then the ⚙️ Settings button. <br>
 Enter the published Google Sheet URL containing your JSON config.
 
-Usage: <br>
+To use: <br>
 On a supported source page, click "Extract Data". <br>
 On a target form page, click "Fill Form".
 
