@@ -18,19 +18,10 @@ Configure:
 Click the extension icon, then the ⚙️ Settings button.
 Enter the published Google Sheet URL containing your JSON config.
 
-Usage:
+To use:
 On a supported source page, click "Extract Data".
 On a target form page, click "Fill Form".
 
-ARCHITECTURE
-
-manifest.json: Defines permissions, popup, options page, and content scripts.
-content.js: Main logic (platform detection, UI, extraction, filling).
-remoteConfigParser.js: Fetches and parses remote configuration.
-background.js: Service worker for remote config fetch (CORS workaround).
-popup.js/popup.html: Popup UI for user actions.
-options.js/options.html: Options page for config URL.
-styles.css: Styles for UI elements.
 
 IMPLEMENTATION
 
