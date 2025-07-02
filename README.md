@@ -1,6 +1,6 @@
 **Overview**
 
-Chrome extension prototype that automates data transfer between two browser tabs. Designed to support rapid adaptation to new platforms via remote configuration.
+Prototype for Chrome extension that automates data transfer between two browser tabs. Designed to support rapid adaptation to new platforms via remote configuration.
 
 Core Functionality
 
