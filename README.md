@@ -6,7 +6,7 @@ Core Functionality
 
 Extract: Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local. <br>
 
-Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
+Fill: Retrieves stored data and populates input fields on a target webpage by mapping data keys to form fields.
 
 **Installation and Usage**
 
