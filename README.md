@@ -50,7 +50,7 @@ Maps data keys to form fields using selectors or label keywords. <br>
 fillElement() sets values and dispatches events for compatibility. <br>
 
 
-**Example Config Structure** (used for initial tests)
+**Example Config Structure** (used in test)
 
 {
 "platforms": {
