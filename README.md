@@ -4,7 +4,7 @@ Chrome extension that automates data transfer between two browser tabs. Designed
 
 Core Functionality
 
-Extract: Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local.
+Extract: Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local. <br>
 
 Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
 
