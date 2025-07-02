@@ -4,9 +4,9 @@ Chrome extension that automates data transfer between two browser tabs. Designed
 
 Core Functionality
 
-**Extract:** Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local.
+Extract: Scrapes data from a source webpage using CSS selectors defined in a remote config. Extracted key-value data is stored in chrome.storage.local.
 
-**Fill:** Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
+Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
 
 QUICK START
 
@@ -27,9 +27,9 @@ IMPLEMENTATION
 
 Remote Configuration
 
-**Hosting:** Config is a raw JSON string in a single cell of a Google Sheet, published as CSV.
-**Fetching:** Background script fetches the config to avoid CORS issues.
-**Parsing:** Handles CSV de-quoting, parses JSON, caches in memory.
+Hosting: Config is a raw JSON string in a single cell of a Google Sheet, published as CSV. <br>
+Fetching: Background script fetches the config to avoid CORS issues. <br>
+Parsing: Handles CSV de-quoting, parses JSON, caches in memory.
 
 Platform Detection
 
