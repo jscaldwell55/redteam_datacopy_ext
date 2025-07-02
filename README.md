@@ -1,4 +1,4 @@
-OVERVIEW
+**Overview**
 
 Chrome extension that automates data transfer between two browser tabs. Designed to support rapid adaptation to new platforms via remote configuration.
 
@@ -8,7 +8,7 @@ Extract: Scrapes data from a source webpage using CSS selectors defined in a rem
 
 Fill: Retrieves stored data and populates input fields on a target webpage (e.g., Google Form) by mapping data keys to form fields.
 
-QUICK START
+**Quick Start**
 
 Load the Extension: <br>
 Go to chrome://extensions <br>
@@ -23,7 +23,7 @@ On a supported source page, click "Extract Data". <br>
 On a target form page, click "Fill Form".
 
 
-IMPLEMENTATION
+**Implementation**
 
 Remote Configuration
 
