@@ -25,18 +25,18 @@ On a target form page, click "Fill Form".
 
 **Implementation**
 
-Remote Configuration
+1. Remote Configuration
 
 Hosting: Config is a raw JSON string in a single cell of a Google Sheet, published as CSV. <br>
 Fetching: Background script fetches the config to avoid CORS issues. <br>
 Parsing: Handles CSV de-quoting, parses JSON, caches in memory.
 
-Platform Detection
+2. Platform Detection
 
 Uses detectHostnames and detectPathnames arrays in the config. <br>
 Supports "*" wildcard for local files or any domain.
 
-Data Flow
+3. Data Flow
 
 Extract: <br>
 User clicks "Extract" on a source page. <br>
