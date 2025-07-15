@@ -142,61 +142,60 @@
     }
 
      async extractDataFromSource() {
-      console.log("[FormFillerApp] Attempting to extract data for platform:", this.currentPageType);
-      const platformConfig = this.config.platforms[this.currentPageType];
-      if (!platformConfig || !platformConfig.fields || !Array.isArray(platformConfig.fields)) {
-        showPageNotification('Error: No valid extraction configuration for this platform.', 'error');
-        return null;
-      }
-
-      // --- START MODIFICATION ---
-      // 1. Get existing data from storage first
-      const storageResult = await chrome.storage.local.get(['formFillerExtractedData']);
-      const extractedData = storageResult.formFillerExtractedData || {}; // Start with old data, or a new object
-
-      // 2. Add/update metadata
-      extractedData._sourcePlatform = this.currentPageType;
-      extractedData._extractionTimestamp = new Date().toISOString();
-      extractedData._sourceUrl = window.location.href;
-      // --- END MODIFICATION ---
-
-      let allRequiredFound = true;
-
-      platformConfig.fields.forEach(fieldRule => {
-        let text = null;
-        if (fieldRule.selectors && Array.isArray(fieldRule.selectors)) {
-          for (const selector of fieldRule.selectors) {
-            try {
-              const element = document.querySelector(selector);
-              if (element) {
-                text = (element.innerText || element.value || element.textContent || '').trim();
-                if (text) break;
-              }
-            } catch (e) { console.warn(`[FormFillerApp] Selector error for key '${fieldRule.key}':`, e); }
-          }
-        }
-        if (text) {
-          // --- MODIFICATION: Only update if a value was found ---
-          extractedData[fieldRule.key] = this.cleanText(text);
-          console.log(`[FormFillerApp] Extracted/Updated for key '${fieldRule.key}': "${extractedData[fieldRule.key].substring(0,50)}..."`);
-        } else {
-          // We don't log a warning here anymore unless it's a required field that was expected but not found
-          if(fieldRule.required) {
-            allRequiredFound = false;
-            console.error(`[FormFillerApp] REQUIRED field key: ${fieldRule.key} was not found!`);
-          }
-        }
-      });
-      
-      if (!allRequiredFound) {
-         showPageNotification('Warning: Some required fields were not extracted. Check console.', 'warning');
-      }
-
-      await chrome.storage.local.set({ 'formFillerExtractedData': extractedData });
-      showPageNotification('✅ Data Extracted!', 'success');
-      
-      return extractedData;
+    console.log("[FormFillerApp] Attempting to extract data for platform:", this.currentPageType);
+    const platformConfig = this.config.platforms[this.currentPageType];
+    if (!platformConfig || !platformConfig.fields || !Array.isArray(platformConfig.fields)) {
+      showPageNotification('Error: No valid extraction configuration for this platform.', 'error');
+      return null;
     }
+
+    // --- START MERGE LOGIC ---
+    // 1. Get existing data from storage first
+    const storageResult = await chrome.storage.local.get(['formFillerExtractedData']);
+    const extractedData = storageResult.formFillerExtractedData || {}; // Start with old data, or a new object
+
+    // 2. Add/update metadata
+    extractedData._sourcePlatform = this.currentPageType;
+    extractedData._extractionTimestamp = new Date().toISOString();
+    extractedData._sourceUrl = window.location.href;
+    // --- END MERGE LOGIC ---
+
+    let allRequiredFound = true;
+
+    platformConfig.fields.forEach(fieldRule => {
+      let text = null;
+      if (fieldRule.selectors && Array.isArray(fieldRule.selectors)) {
+        for (const selector of fieldRule.selectors) {
+          try {
+            const element = document.querySelector(selector);
+            if (element) {
+              text = (element.innerText || element.value || element.textContent || '').trim();
+              if (text) break;
+            }
+          } catch (e) { console.warn(`[FormFillerApp] Selector error for key '${fieldRule.key}':`, e); }
+        }
+      }
+      if (text) {
+        // --- This part now adds to the object instead of creating a new one ---
+        extractedData[fieldRule.key] = this.cleanText(text);
+        console.log(`[FormFillerApp] Extracted/Updated for key '${fieldRule.key}': "${extractedData[fieldRule.key].substring(0,50)}..."`);
+      } else {
+        if(fieldRule.required) {
+          allRequiredFound = false;
+          console.error(`[FormFillerApp] REQUIRED field key: ${fieldRule.key} was not found!`);
+        }
+      }
+    });
+    
+    if (!allRequiredFound) {
+       showPageNotification('Warning: Some required fields were not extracted. Check console.', 'warning');
+    }
+
+    await chrome.storage.local.set({ 'formFillerExtractedData': extractedData });
+    showPageNotification('✅ Data Extracted!', 'success');
+    
+    return extractedData;
+  }
 
     async fillGoogleForm() {
       console.log("[FormFillerApp] Attempting to fill Google Form.");
