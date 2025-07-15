@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock SRT Tool</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 20px; width: 400px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .step { display: none; }
+        .step.active { display: block; }
+        h3 { margin-top: 0; color: #1c1e21; }
+        .option { background-color: #e4e6eb; border: 1px solid transparent; border-radius: 6px; padding: 10px; margin-bottom: 10px; cursor: pointer; font-weight: bold; color: #050505; }
+        .option:hover { background-color: #d8dbe0; }
+        .option.selected { background-color: #1b74e4; color: white; border-color: #1b74e4; }
+        #completion-message { text-align: center; padding: 20px; font-size: 1.2em; color: #4b4f56; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="step1" class="step active">
+            <h3>What action needs to be taken?</h3>
+            <div class="option" onclick="selectOption(1, 'Label')">Label</div>
+            <div class="option" onclick="selectOption(1, 'Escalate')">Escalate</div>
+            <div class="option" onclick="selectOption(1, 'No Action')">No Action</div>
+        </div>
+
+        <div id="step2" class="step">
+            <h3>What Abuse Type?</h3>
+            <div class="option" onclick="selectOption(2, 'Bullying and Harassment')">Bullying and Harassment</div>
+            <div class="option" onclick="selectOption(2, 'Hate Speech')">Hate Speech</div>
+            <div class="option" onclick="selectOption(2, 'Spam')">Spam</div>
+        </div>
+
+        <div id="step3" class="step">
+            <h3>Who is the target?</h3>
+            <div class="option" onclick="selectOption(3, 'Adult Public Figure(s)')">Adult Public Figure(s)</div>
+            <div class="option" onclick="selectOption(3, 'Private Adult(s)')">Private Adult(s)</div>
+            <div class="option" onclick="selectOption(3, 'Private Minor(s)')">Private Minor(s)</div>
+        </div>
+
+        <div id="step4" class="step">
+            <h3>What exactly?</h3>
+            <div class="option" onclick="selectOption(4, 'Negative physical description')">Negative physical description</div>
+            <div class="option" onclick="selectOption(4, 'Sexualized Harassment')">Sexualized Harassment</div>
+            <div class="option" onclick="selectOption(4, 'Calls for Death, SSI...')">Calls for Death, SSI...</div>
+        </div>
+        
+        <div id="completion-message" class="step">
+            <h3>All steps complete.</h3>
+            <p>You may now extract the data.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(stepNum, value) {
+            // Set selected style
+            const currentStepEl = document.getElementById(`step${stepNum}`);
+            currentStepEl.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            // Move to next step after a short delay
+            setTimeout(() => {
+                currentStepEl.classList.remove('active');
+                const nextStepEl = document.getElementById(`step${stepNum + 1}`);
+                if (nextStepEl) {
+                    nextStepEl.classList.add('active');
+                }
+            }, 300);
+        }
+    </script>
+</body>
+</html>

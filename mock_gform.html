@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Destination Form</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; padding-top: 50px; }
+        .form-container { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 25px; width: 500px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input[type="text"] { width: 95%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Labeling Destination</h2>
+        <form>
+            <div class="form-group">
+                <label for="action_taken">Action Taken</label>
+                <input type="text" id="action_taken">
+            </div>
+            <div class="form-group">
+                <label>What was the Abuse Type?</label>
+                <input type="text" id="abuse_type">
+            </div>
+            <div class="form-group">
+                <label>Target Identity</label>
+                <input type="text" id="target_input">
+            </div>
+            <div class="form-group">
+                <label>What, exactly, was the violation?</label>
+                <input type="text" id="violation_detail">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
